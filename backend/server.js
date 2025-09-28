@@ -10,12 +10,12 @@ dotenv.config();
 
 // --- START OF FIX: Add startup check for JWT_SECRET ---
 if (!process.env.JWT_SECRET) {
-    console.error('\n\n--- FATAL ERROR: JWT_SECRET is not defined in the environment variables. ---');
-    console.error('The backend server cannot start without a secret key for signing tokens.');
-    console.error('1. Open the ".env" file in the "/backend" directory.');
-    console.error('2. Add a line for JWT_SECRET with a long, random, secret string.');
-    console.error('Example: JWT_SECRET=your_super_secret_and_random_string_here\n\n');
-    process.exit(1);
+  console.error('\n\n--- FATAL ERROR: JWT_SECRET is not defined in the environment variables. ---');
+  console.error('The backend server cannot start without a secret key for signing tokens.');
+  console.error('1. Open the ".env" file in the "/backend" directory.');
+  console.error('2. Add a line for JWT_SECRET with a long, random, secret string.');
+  console.error('Example: JWT_SECRET=your_super_secret_and_random_string_here\n\n');
+  process.exit(1);
 }
 // --- END OF FIX ---
 
@@ -40,6 +40,11 @@ app.use(express.json());
 // Enable CORS - For production, you might want to restrict this
 // Example: app.use(cors({ origin: 'https://your-frontend-domain.up.railway.app' }));
 app.use(cors());
+
+// Root route for convenience
+app.get('/', (req, res) => {
+  res.status(200).json({ success: true, message: 'Divine Darshan API is running. See /api/health' });
+});
 
 // Mount routers
 app.use('/api/auth', authRoutes);
