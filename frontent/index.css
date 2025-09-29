@@ -1,0 +1,39 @@
+/* Add any global CSS here if needed */
+/* Tailwind CSS is loaded via CDN in index.html */
+
+/* Ensure the app takes full height */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom scrollbar styles for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff9933;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e8840f;
+}
+
+/* Hide scrollbar for certain elements (like the horizontal scroll containers) */
+.scroll-smooth::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-smooth {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
